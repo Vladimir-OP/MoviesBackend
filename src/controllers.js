@@ -82,7 +82,7 @@ const addMovie = async (req, res) => {
     poster_path,
     release_date,
     title,
-    vote_average,
+    vote_average, 
     user_id,
   });
 };
@@ -96,7 +96,7 @@ const getFilteredMovies = async (req, res) => {
     order: [[filter.type, filter.value]],
   });
   if (filteredMovies) {
-    res.send(filteredMovies).status(201);
+    res.send(filteredMovies).status(201);  
   }
 };
 // delete Movie form DB
