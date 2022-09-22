@@ -50,10 +50,15 @@ const userLogin = async (req, res) => {
 // get all user movies
 const getAllMovies = async (req, res) => {
   const { id } = req.user;
-  const Movies = await movies.findAll({ where: { user_id: id } });
-  if (Movies) {
-    res.send(Movies).status(200);
-  } else res.send([]).json({ message: "no movies here " });
+  try {
+    const Movies = await movies.findAll({ where: { user_id: id } });
+    if (Movies) {
+      res.send(Movies).status(200);
+    } else res.send([]).json({ message: "no movies here " });
+  } catch (error) {
+    console.log(error);
+  }
+
 };
 
 // add new movie 
